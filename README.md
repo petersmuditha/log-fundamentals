@@ -1,15 +1,26 @@
 # **Log analays in Digital Forencies**
-Introduction to Digital Traces 🔍
-Attackers are clever. They avoid leaving maximum traces on the victim's side to avoid detection. Yet, the security team successfully determines how the attack was executed and is even sometimes successful in finding who was behind the attack.
 
-Imagine this scenario: A few policemen are investigating the disappearance of a precious locket in a snowy jungle cabin. They observed that the wooden door of the cabin was brutally damaged, and the ceiling collapsed. There were some footprints on the snowy path to that cabin. Lastly, they discovered some CCTV footage from a neighboring residence. By placing together all these traces, the police successfully determined who was behind the attack. Various traces are found in several such cases; putting all these together takes you closer to the criminal.
+> A personal deep dive into logging mechanisms, formats, and analysis across Windows and Linux systems.
 
-It seems like these traces play a big role in the investigations.
+## 📌 Description
+This repository contains my notes, scripts, and examples from studying system and application logging. I explore where logs are stored, how to read them, and how to use them for troubleshooting and security monitoring.
 
-But what if something happened within a digital device? Where do we find all these traces to investigate further?
+## 🧠 What I Learned
+- **Use Cases of Logs**
+- **Types of Logs**
+- **Introduction to Windows Logging System**
+- **Web Server Log Analysis Guide**:
+  
+## 📁 Repository Structure
+Log analays in Digital Forencies/
+├── Problems I Solved
+│ ├── Use Cases of Logs
+│ └── Types of Logs
+├── Introduction to Windows Logging System
+│ ├──  Web Server Log Analysis Guide
 
-# **Digital Logs: The Electronic Footprints** 📋
-There are various places inside a system where the traces of an attack could be fetched. The logs contain most of these traces. Logs are the digital footprints left behind by any activity. The activity could be a normal one or the one with malicious intent. Tracing down the activity and the individual behind the execution of that activity becomes easier through logs.
+## 🐛 Problems I Solved
+While analyzing web server logs, I used cat to combine two log files but accidentally overwrote one of them. Instead of using cat access1.log access2.log > combined.log, I mistakenly used cat access1.log > access2.log, which replaced the contents of access2.log with access1.log, causing data loss. To recover, I realized I had a backup of the original logs in a compressed archive. I restored the files using tar -xzf backup_logs.tar.gz and then properly combined them with cat access1.log access2.log > combined.log to avoid overwriting. This taught me to always double-check redirection targets and maintain backups.
 
 # **Use Cases of Logs** 🎯
 
@@ -179,7 +190,7 @@ Enter Event IDs (e.g., 4624,4625)
 
 Click 'OK' ✅
 
-Web Server Log Analysis Guide 🌐
+## Web Server Log Analysis Guide 🌐
 Introduction to Web Server Logs
 We interact with many websites daily. Sometimes, we just want to view the website, and sometimes, we want to log in or upload a file into any available input field. These are just different kinds of requests we make to a website. All these requests are logged by the website and stored in a log file on the web server running that website.
 This log file contains all the requests made to the website along with the information on the timeframe, the IP requested, the request type, and the URL.
