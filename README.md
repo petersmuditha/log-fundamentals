@@ -12,7 +12,7 @@ This repository contains my notes, scripts, and examples from studying system an
 - **Web Server Log Analysis Guide**:
   
 ## 📁 Repository Structure
-Log analays in Digital Forencies/
+  Log analays in Digital Forencies/
 ├── Problems I Solved
 │ ├── Use Cases of Logs
 │ └── Types of Logs
