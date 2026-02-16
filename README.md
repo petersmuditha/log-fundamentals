@@ -1,235 +1,96 @@
-# **Log analays in Digital Forencies**
+# 📁 Log Analysis Fundamentals
 
-> A personal deep dive into logging mechanisms, formats, and analysis across Windows and Linux systems.
+**A practical guide and portfolio of log analysis projects for aspiring SOC analysts.**
 
-## 📌 Description
-This repository contains my notes, scripts, and examples from studying system and application logging. I explore where logs are stored, how to read them, and how to use them for troubleshooting and security monitoring.
+👋 Hi, I'm Muditha an aspiring  **Cybersecurity Technical Writer**.  
+This repository is my learning journal and portfolio, where I document my journey in mastering log analysis, from basic Linux commands to advanced SIEM investigations, based on the **TryHackMe SOC Level 1 path**.
 
-## 🧠 What I Learned
-- **Use Cases of Logs**
-- **Types of Logs**
-- **Introduction to Windows Logging System**
-- **Web Server Log Analysis Guide**:
-  
-## 📁 Repository Structure
-  Log analays in Digital Forencies/
-├── Problems I Solved
-│ ├── Use Cases of Logs
-│ └── Types of Logs
-├── Introduction to Windows Logging System
-│ ├──  Web Server Log Analysis Guide
+I believe that **good documentation is as important as good detection**. Here you'll find not just commands, but structured methodologies, real-world use cases (with fake data), and reusable templates that I've built to help others (and myself) respond faster and smarter.
 
-## 🐛 Problems I Solved
-While analyzing web server logs, I used cat to combine two log files but accidentally overwrote one of them. Instead of using cat access1.log access2.log > combined.log, I mistakenly used cat access1.log > access2.log, which replaced the contents of access2.log with access1.log, causing data loss. To recover, I realized I had a backup of the original logs in a compressed archive. I restored the files using tar -xzf backup_logs.tar.gz and then properly combined them with cat access1.log access2.log > combined.log to avoid overwriting. This taught me to always double-check redirection targets and maintain backups.
+---
 
-# **Use Cases of Logs** 🎯
+## 🛠️ Skills & Tools (TryHackMe-aligned)
 
-🔒 Security Events Monitoring	Logs help us detect anomalous behavior when real-time monitoring is used.
-🔍 Incident Investigation and Forensics	Logs are the traces of every kind of activity. It offers detailed information on what happened during the incident. The security team utilizes the logs to perform root cause analysis of incidents.
-🛠️ Troubleshooting	As the logs also record the errors in systems or applications, they can be used to diagnose issues and helpful in fixing them.
-📊 Performance Monitoring	Logs can also provide valuable insights into the performance of applications.
-📝 Auditing and Compliance	Logs play a major role in Auditing and Compliance, making it easier with its capability to establish a trail of different kinds of activities.
-This room will equip you with an understanding of various types of logs maintained in different systems. We will also be practically investigating logs as traces of different attacks.
+🔹 **Core Log Analysis:** Linux Logs (`/var/log/auth.log`, `/var/log/syslog`), Windows Event Logs (Security, Application, System)  
+🔹 **SIEM Platforms:** Splunk (SPL), Elastic Stack (Kibana queries), QRadar (basic correlation)  
+🔹 **Network Traffic Analysis:** Zeek logs, `tcpdump`, Wireshark, NetworkMiner  
+🔹 **Threat Detection Frameworks:** MITRE ATT&CK, Cyber Kill Chain, Pyramid of Pain  
+🔹 **Scripting for Automation:** Python (log parsing), Bash (grep/awk one-liners), PowerShell (event log queries)  
+🔹 **Incident Response Workflow:** Triage, investigation, escalation, reporting
 
-# **Types of Logs** 📁
-Logs are segregated into multiple categories according to the type of information they provide. So now you just need to look into the specific log file for which the issue relates.
+---
 
-For example: You need to investigate the successful logins from yesterday at a specific timeframe in Windows OS. Instead of looking into all the logs, you only need to see the system's Security Logs to find the login information. We also have other types of logs that are useful in investigating different incidents. Let's have a look at them.
+## 🧭 About This Repository
 
-💻 System Logs
-Usage: The system logs can be helpful in troubleshooting running issues in the OS. These logs provide information on various operating system activities.
+This repository is structured to reflect the core modules of the **TryHackMe SOC Level 1 path**, with practical projects for each area.
 
-Examples:
+| Section | TryHackMe Module Reference | Description |
+|---------|----------------------------|-------------|
+| **🔍 Linux Commands** | Linux Fundamentals, Security Onion | Essential commands for navigating and analyzing logs on Linux systems. |
+| **🪟 PowerShell Logs** | Windows Fundamentals, Windows Event Logs | Techniques for extracting and investigating Windows event logs. |
+| **📊 SIEM Queries** | Core SOC Solutions (Splunk/Elastic) | Example queries for Splunk and ELK, with explanations of detection logic. |
+| **🚨 Use Cases** | Phishing Analysis, Malware Traffic Analysis, SIEM Triage | Step-by-step walkthroughs of common SOC scenarios. |
+| **📝 Investigation Templates** | SOC Team Internals, Reporting | Ready-to-use templates for documenting your findings. |
+| **⚙️ Scripts** | Automation | Python, Bash, and PowerShell scripts to speed up log analysis. |
 
-System Startup and shutdown events
+---
 
-Driver Loading events
+## 🚨 Projects & Use Cases (TryHackMe-based)
 
-System Error events
+Here are the main projects I've built, directly inspired by TryHackMe rooms and modules. Each includes a detailed write-up, commands, and screenshots.
 
-Hardware events
+| Project | TryHackMe Room / Module | Tools Used | Status |
+|--------|-------------------------|------------|--------|
+| [**SSH Brute Force Detection**] | Linux Log Analysis, Splunk 101 | `grep`, `awk`, `sort`, `Splunk` | ✅ Complete |
+| [**Phishing Email Investigation**] | Phishing Analysis | Email headers, `jq`, `Kibana` | ✅ Complete |
+| [**Malware C2 Traffic Analysis**] | Malware Traffic Analysis | `tcpdump`, `Wireshark`, `Zeek` | ✅ Complete |
+| [**Windows Event Log - Pass-the-Hash**] | Windows Event Logs, Active Directory | PowerShell, `Get-WinEvent`, Event ID 4624/4625 | ✅ Complete |
+| [**Splunk Correlation Search**] | Core SOC Solutions (Splunk) | Splunk SPL, Lookups | ✅ Complete |
 
-🔒 Security Logs
-Usage: The security logs help detect and investigate incidents. These logs provide information on the security-related activities in the system.
+> 🔒 *All data used in these projects is 100% synthetic and generated in isolated lab environments (TryHackMe rooms, custom VMs). No real customer or company data is ever used.*
 
-Examples:
+---
 
-Authentication events
+## 📚 What I'm Learning & Demonstrating
 
-Authorization events
+Through this repository, I aim to show:
 
-Security Policy changes events
+- **Practical log analysis skills** across Linux, Windows, and SIEM platforms, as taught in TryHackMe.
+- **Understanding of SOC workflows** — triage, investigation, escalation, and reporting.
+- **Documentation discipline** — clear, structured, and useful writing that helps teams.
+- **Automation mindset** — using scripts to reduce manual work.
+- **Continuous learning** — I update this repo as I progress through TryHackMe and gain new skills.
 
-User Account changes events
+---
 
-Abnormal Activity events
+## 💡 My Philosophy on Technical Writing
 
-📱 Application Logs
-Usage: The application logs contain specific events related to the application. Any interactive or non-interactive activity happening inside the application will be logged here.
+> *"I write for clarity and structure. I'm interested in how writing can influence behavior, simplify the complex, and shift how people understand security."*  
+> — inspired by [ananichoumchoum](https://github.com/ananichoumchoum)
 
-Examples:
+In cybersecurity, clear documentation saves time during incidents and ensures that knowledge isn't lost. Every project here is an exercise in making technical concepts accessible and actionable, just like the excellent walkthroughs on TryHackMe.
 
-User Interaction events
+---
 
-Application Changes events
+## 📬 Connect with Me
 
-Application Update events
+I'm actively looking for opportunities as a **Cybersecurity Technical Writer** or **Junior SOC Analyst**. If you have feedback on my work, want to collaborate, or know of an opportunity, I'd love to hear from you.
 
-Application Error events
+- Remote.com Link: [https://remote.com/jobs/account/profile]
+- Email: petersmuditha@gmail.com
 
-📝 Audit Logs
-Usage: The Audit logs provide detailed information on the system changes and user events. These logs are helpful for compliance requirements and can play a vital role in security monitoring as well.
+---
 
-Examples:
+## ⚠️ Disclaimer
 
-Data Access events
+All data, logs, and scenarios in this repository are **fictional and generated in controlled lab environments** (TryHackMe rooms or custom VMs). They do not contain any sensitive information from real organizations or individuals. The purpose is purely educational and for portfolio demonstration.
 
-System Change events
+---
 
-User Activity events
+Special thanks to **TryHackMe** for providing an incredible hands-on learning platform that makes cybersecurity accessible to everyone.
 
-Policy Enforcement events
+---
 
-🌐 Network Logs
-Usage: Network logs provide information on the network's outgoing and incoming traffic. They play crucial roles in troubleshooting network issues and can also be handy during incident investigations.
+**Last updated:** [16/02/2026]  
+**Next planned update:** IDS Fundamentals
 
-Examples:
-
-Incoming Network Traffic events
-
-Outgoing Network Traffic events
-
-Network Connection Logs
-
-Network Firewall Logs
-
-🔑 Access Logs
-Usage: The Access logs provide detailed information about the access to different resources. These resources can be of different types, providing us with information on their access.
-
-Examples:
-
-Webserver Access Logs
-
-Database Access Logs
-
-Application Access Logs
-
-API Access Logs
-
-⚠️ Note: There can be various other types of logs depending on the different applications and the services they provide
-
-# **Introduction to Windows Logging System**
-Like other operating systems, Windows OS also logs many of the activities that take place. These are stored in segregated log files, each with a specific log category. Some of the crucial types of logs stored in a Windows Operating System are:
-
-📁 Key Windows Log Categories
-Log Type	Purpose	Example Content
-📱 Application Logs	Applications running on the OS	Errors, warnings, compatibility issues
-⚙️ System Logs	Operating system operations	Driver issues, hardware issues, system startup/shutdown
-🔒 Security Logs	Security-related activities	User authentication, account changes, policy changes
-Besides these, several other log files in the Windows operating system are designed for logging activities related to specific actions and applications.
-
-# **Event Viewer: Windows Log Analysis Tool 🔍**
-Unlike other log files studied in the previous tasks, which had no built-in application to view them, Windows OS has a utility known as Event Viewer, which gives a nice graphical user interface to view and search for anything in these logs.
-
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/af25df8019845d96d2a9e1487a50c189eede0752/Cattura300.PNG)
-
-# ** How to Access Event Viewer **:
-Click the Start button 🏠
-
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/539a85e29c9f5f2df7786628a95f5cfa25522d39/Cattura350.PNG)
-
-Type 'Event Viewer' ⌨️
-
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/aeefa182e88a5051f609d01d207081ab1405a622/Cattura351.PNG)
-
-Press Enter ⏎
-
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/cdf58f85410b613be038faf81c7810ec379ecee4/Cattura352.PNG)
-
-The highlighted area in the screenshot above shows the different available logs. You can click 'Windows Logs' from the highlighted section to see the different types of logs we discussed at the beginning of this task.
-
-# **Understanding Windows Event Log Structure** 📊
-
-Major Event Log Fields:
-
-### 1. 📝 Description	Detailed information of the activity	Contains the full context of what happened
-### 2.📁 Log Name	Indicates the log file name	Tells you which log category this belongs to
-### 3.🕐 Logged	Time of the activity	Crucial for timeline reconstruction
-### 4.🔢 Event ID	Unique identifier for specific activity	The key to filtering and searching
-
-# **Crucial Windows Event IDs 🎯**
-Numerous event IDs are available in Windows event logs. We can use these event IDs to search for any specific activity. For example, event ID 4624 uniquely identifies the activity of a successful login.
-
-Event ID	Description	Security Significance
-### 1.✅ 4624	A user account successfully logged in	Monitor successful authentications
-### 2.❌ 4625	A user account failed to login	Detect brute force attacks
-### 3.🚪 4634	A user account successfully logged off	Track session management
-### 4.👤 4720	A user account was created	Detect unauthorized account creation
-### 5.🔑 4724	An attempt made to reset an account's password	Monitor password reset attempts
-### 6.🟢 4722	A user account was enabled	Track account status changes
-### 7.🔴 4725	A user account was disabled	Monitor account deactivations
-### 8.🗑️ 4726	A user account was deleted	Detect account removal
-⚠️ Note: There are many more event IDs. It is not necessary to remember all of them, but it is good to remember the crucial event IDs.
-
-# **Filtering Logs in Event Viewer 🔎**
-Event Viewer allows us to search for the logs related to a specific event ID with its 'Filter Current Log' feature.
-
-Steps to Filter Logs:
-
-Navigate to desired log category 📁
-
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/1c38e9add71a266fff28b3e80215e398521a1d8b/Cattura353.PNG)
-
-Click 'Filter Current Log' ⚙️
-
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/1c38e9add71a266fff28b3e80215e398521a1d8b/Cattura354.PNG)
-
-Enter Event IDs (e.g., 4624,4625)
-
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/1c38e9add71a266fff28b3e80215e398521a1d8b/Cattura355.PNG)
-
-Click 'OK' ✅
-
-## Web Server Log Analysis Guide 🌐
-Introduction to Web Server Logs
-We interact with many websites daily. Sometimes, we just want to view the website, and sometimes, we want to log in or upload a file into any available input field. These are just different kinds of requests we make to a website. All these requests are logged by the website and stored in a log file on the web server running that website.
-This log file contains all the requests made to the website along with the information on the timeframe, the IP requested, the request type, and the URL.
-
-# 1. cat Command - Display Log Contents
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/6e7d970365bebb0f51bc4b91bbfc4c28ea656d27/Cattura400.PNG)
-
-Description: 📄
-The cat command displays the entire contents of a text file. In log analysis, it's used to view raw log data.
-
-# 2. cat with Multiple Files - Combine Logs
-
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/6e7d970365bebb0f51bc4b91bbfc4c28ea656d27/Cattura401.PNG)
-
-Description: 🔗
-Combines multiple log files into one. Useful when logs are rotated or split across different files.
-
-Process:
-
-Reads access1.log
-
-Reads access2.log
-
-Outputs combined content to combined_access.log
-
-Use Case: Analyzing logs from different time periods together.
-
-# 3. grep Command - Search for Specific Patterns
-   
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/6e7d970365bebb0f51bc4b91bbfc4c28ea656d27/Cattura402.PNG)
-
-Description: 🔍
-Searches for specific text patterns within log files. In this case, finds all entries from IP 192.168.1.1.
-
-# 4. less Command - Paginated Log Viewing
-![image alt](https://github.com/petersmuditha/log-fundamentals/blob/6e7d970365bebb0f51bc4b91bbfc4c28ea656d27/Cattura403.PNG)
-
-Description: 📖
-Displays log files one page at a time, preventing information overload from large files.
-
-# Conclusion
-This investigation demonstrated how digital forensics transforms digital footprints into courtroom evidence. Through meticulous log analysis, metadata extraction, and proper forensic protocols, hidden digital traces were uncovered and linked to criminal activity. The case proves that digital evidence is both powerful and decisive when collected and analyzed with precision. The right tools, proper methodology, and attention to detail turn chaotic data into clear, actionable intelligence for justice.
